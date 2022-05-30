@@ -22,5 +22,15 @@
             <TextBlock x:Name="label4" Canvas.Left="330" Text="Заяц"
                        Canvas.Top="41" Padding="5"/>
         </Canvas>
+        <UniformGrid x:Name="grid1" Margin="10,0,10,10" Columns="4"
+                     AllowDrop="True"
+                     PreviewDragEnter="grid1_PreviewDragEnter"
+                     PreviewDragOver="grid1_PreviewDragOver"
+                     Drop="grid1_Drop">
+            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
+        </UniformGrid>
     </StackPanel>
 </Window>

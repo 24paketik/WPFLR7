@@ -56,5 +56,30 @@ namespace WFLR7
         {
 
         }
+
+        private void grid1_PreviewDragEnter(object sender, DragEventArgs e)
+        {
+            var trg = e.Source as TextBox;
+            if (trg == null)
+                return ;
+            e.Handled= true;
+            e.Effects=trg.Text == "" ?
+                DragDropEffects.Move : DragDropEffects.None;
+        }
+
+        private void grid1_PreviewDragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void grid1_Drop(object sender, DragEventArgs e)
+        {
+            var trg = e.Source as TextBox;
+            if (trg != null)
+                return;
+            var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
+            trg.Text = src.Text;
+            src.Visibility = Visibility.Hidden;
+        }
     }
 }
