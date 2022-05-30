@@ -59,7 +59,7 @@ namespace WFLR7
 
         private void label1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            TextBlock t = e.Source as TextBlock;
+            var t = e.Source as TextBlock;
             if (t == null)
                 return;
             t.Foreground = Brushes.Red;
