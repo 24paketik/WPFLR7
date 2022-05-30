@@ -43,5 +43,18 @@ namespace WFLR7
             if (e.ChangedButton == MouseButton.Left)
                 DragDrop.DoDragDrop(t, t, DragDropEffects.Move);
         }
+
+        private void canvas1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Source is Canvas)
+                return;
+            e.Handled = true;
+            e.Effects = e.Data.GetData(typeof(TextBlock))==e.Source ? DragDropEffects.Move : DragDropEffects.None;
+        }
+
+        private void canvas1_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }
