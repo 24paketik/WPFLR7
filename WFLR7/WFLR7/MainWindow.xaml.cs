@@ -117,5 +117,17 @@ namespace WFLR7
                 return;
             trg.Background = null;
         }
+
+        private void Window_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            if (e.Effects == DragDropEffects.Move)
+            {
+                e.UseDefaultCursors = false;
+                Mouse.SetCursor(Cursors.Hand);
+            }
+            else
+                e.UseDefaultCursors=true;
+            e.Handled=true;
+        }
     }
 }

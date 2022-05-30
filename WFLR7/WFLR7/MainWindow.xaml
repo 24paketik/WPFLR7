@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Зоопарк" SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize"
+        GiveFeedback="Window_GiveFeedback">
     <StackPanel>
         <Canvas x:Name="canvas1" Margin="10" Width="480" Height="240"
                 Background="LightGray" AllowDrop="True"
