@@ -56,15 +56,22 @@ namespace WFLR7
             TextBlock t = e.Source as TextBlock;
             if (t == null)
                 return;
+            t.Foreground = Brushes.Red;
             if (e.ChangedButton == MouseButton.Left)
                 if (DragDrop.DoDragDrop(t, t, DragDropEffects.All) ==
                     DragDropEffects.None)
                     t.Visibility=Visibility.Hidden;
+            t.Foreground = Brushes.Black;
         }
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
         {
+            e.Handled = true;
             e.Effects = DragDropEffects.Move;
+            var trg = e.Source as TextBlock;
+            if (trg == null)
+                return;
+            trg.Background = Brushes.Yellow;
         }
 
         private void canvas1_DragOver(object sender, DragEventArgs e)
@@ -93,12 +100,22 @@ namespace WFLR7
             if (trg != null)
                 return;
             var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
+            trg.Background = null;
             if ((src.Tag as string)[0] >= (trg.Tag as string)[0])
             {
                 trg.Text = src.Text;
                 trg.Tag = src.Tag;
             }
             src.Visibility = Visibility.Hidden;
+        }
+
+        private void canvas1_DragLeave(object sender, DragEventArgs e)
+        {
+            e.Handled = true;
+            var trg = e.Source as TextBlock;
+            if (trg!= null)
+                return;
+            trg.Background = null;
         }
     }
 }
