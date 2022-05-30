@@ -27,12 +27,28 @@ namespace WFLR7
 
         private void canvas1_Drop(object sender, DragEventArgs e)
         {
-            if (!(e.Source is Canvas))
-                return;
-            TextBlock src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
-            Point p = e.GetPosition(canvas1);
-            Canvas.SetLeft(src, p.X - src.ActualWidth/2);
-            Canvas.SetTop(src, p.Y - src.ActualHeight/2);
+            if (e.Source is Canvas)
+            {
+                TextBlock src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
+                Point p = e.GetPosition(canvas1);
+                Canvas.SetLeft(src, p.X - src.ActualWidth / 2);
+                Canvas.SetTop(src, p.Y - src.ActualHeight / 2);
+            }
+            else
+            {
+                var trg = e.Source as TextBlock;
+                var src = e.Data.GetData(typeof (TextBlock)) as TextBlock;
+                if ((src.Tag as string)[0] >(trg.Tag as string)[0])
+                {
+                    Canvas.SetLeft(src, Canvas.GetLeft(trg));
+                    Canvas.SetTop(src, Canvas.GetTop(trg));
+                    trg.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    src.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void label1_MouseDown(object sender, MouseButtonEventArgs e)
@@ -46,10 +62,7 @@ namespace WFLR7
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Source is Canvas)
-                return;
-            e.Handled = true;
-            e.Effects = e.Data.GetData(typeof(TextBlock))==e.Source ? DragDropEffects.Move : DragDropEffects.None;
+            e.Effects = DragDropEffects.Move;
         }
 
         private void canvas1_DragOver(object sender, DragEventArgs e)
@@ -78,7 +91,11 @@ namespace WFLR7
             if (trg != null)
                 return;
             var src = e.Data.GetData(typeof(TextBlock)) as TextBlock;
-            trg.Text = src.Text;
+            if ((src.Tag as string)[0] >= (trg.Tag as string)[0])
+            {
+                trg.Text = src.Text;
+                trg.Tag = src.Tag;
+            }
             src.Visibility = Visibility.Hidden;
         }
     }

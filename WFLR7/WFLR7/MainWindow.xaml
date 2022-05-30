@@ -14,23 +14,23 @@
                 Drop="canvas1_Drop" MouseDown="label1_MouseDown"
                 DragEnter="canvas1_DragEnter" DragOver="canvas1_DragOver">
             <TextBlock x:Name="label1" Canvas.Left="30" Text="Медведь"
-                       Canvas.Top="41" Padding="5" />
+                       Canvas.Top="41" Padding="5"  Tag="4"/>
             <TextBlock x:Name="label2" Canvas.Left="130" Text="Волк"
-                       Canvas.Top="41" Padding="5"/>
+                       Canvas.Top="41" Padding="5" Tag="3"/>
             <TextBlock x:Name="label3" Canvas.Left="230" Text="Лисица"
-                       Canvas.Top="41" Padding="5"/>
+                       Canvas.Top="41" Padding="5" Tag="2"/>
             <TextBlock x:Name="label4" Canvas.Left="330" Text="Заяц"
-                       Canvas.Top="41" Padding="5"/>
+                       Canvas.Top="41" Padding="5" Tag="1"/>
         </Canvas>
         <UniformGrid x:Name="grid1" Margin="10,0,10,10" Columns="4"
                      AllowDrop="True"
                      PreviewDragEnter="grid1_PreviewDragEnter"
                      PreviewDragOver="grid1_PreviewDragOver"
                      Drop="grid1_Drop">
-            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
-            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
-            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
-            <TextBox Text="" IsReadOnly="True" Background="Gray"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
+            <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
         </UniformGrid>
     </StackPanel>
 </Window>
