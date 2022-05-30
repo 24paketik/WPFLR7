@@ -35,7 +35,7 @@
             <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
         </UniformGrid>
         <Button x:Name="button1" HorizontalAlignment="Center"
-                Margin="0,0,0,10">
+                Margin="0,0,0,10" Click="button1_Click">
             <StackPanel Margin="5,0" Orientation="Horizontal">
                 <Ellipse x:Name="mark1" Margin="5" Fill="Red"
                          Width="15" Height="15"/>

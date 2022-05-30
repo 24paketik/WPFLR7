@@ -20,9 +20,15 @@ namespace WFLR7
     /// </summary>
     public partial class MainWindow : Window
     {
+        double[] startPosX = new double[4];
+        double startPosY;
         public MainWindow()
         {
             InitializeComponent();
+            startPosY = Canvas.GetTop(canvas1.Children[0]);
+            for (int i=0; i<4; i++)
+                startPosX[i] = Canvas.GetLeft(canvas1.Children[i]);
+            button1.Focus();
         }
 
         private void canvas1_Drop(object sender, DragEventArgs e)
@@ -140,6 +146,23 @@ namespace WFLR7
             else
                 e.UseDefaultCursors=true;
             e.Handled=true;
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i=0;i<4;i++)
+            {
+                var t = canvas1.Children[i];
+                t.Visibility = Visibility.Visible;
+                Canvas.SetTop(t, startPosY);
+                Canvas.SetLeft(t, startPosX[i]);
+                var tb = grid1.Children[i] as TextBox;
+                tb.Text = "";
+                tb.Tag = "0";
+            }
+            mark1.Fill = Brushes.Red;
+            caption1.Foreground = Brushes.Red;
+            caption1.Text = "Зоопарк закрыт";
         }
     }
 }
