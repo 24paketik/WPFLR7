@@ -57,7 +57,9 @@ namespace WFLR7
             if (t == null)
                 return;
             if (e.ChangedButton == MouseButton.Left)
-                DragDrop.DoDragDrop(t, t, DragDropEffects.Move);
+                if (DragDrop.DoDragDrop(t, t, DragDropEffects.All) ==
+                    DragDropEffects.None)
+                    t.Visibility=Visibility.Hidden;
         }
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
