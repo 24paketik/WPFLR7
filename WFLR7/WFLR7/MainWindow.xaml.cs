@@ -62,6 +62,18 @@ namespace WFLR7
                     DragDropEffects.None)
                     t.Visibility=Visibility.Hidden;
             t.Foreground = Brushes.Black;
+            string s = "";
+            for (int i = 0; i < 4; i++)
+            {
+                if (canvas1.Children[i].IsVisible)
+                    return;
+                s+=(grid1.Children[i] as TextBox).Text;
+            }
+            if (s == "")
+                return;
+            mark1.Fill = Brushes.Green;
+            caption1.Foreground = Brushes.Green;
+            caption1.Text = "Зоопарк открыт";
         }
 
         private void canvas1_DragEnter(object sender, DragEventArgs e)
@@ -113,7 +125,7 @@ namespace WFLR7
         {
             e.Handled = true;
             var trg = e.Source as TextBlock;
-            if (trg!= null)
+            if (trg == null)
                 return;
             trg.Background = null;
         }

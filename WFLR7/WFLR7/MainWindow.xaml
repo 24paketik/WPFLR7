@@ -34,5 +34,14 @@
             <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
             <TextBox Text="" IsReadOnly="True" Background="Gray" Tag="0"/>
         </UniformGrid>
+        <Button x:Name="button1" HorizontalAlignment="Center"
+                Margin="0,0,0,10">
+            <StackPanel Margin="5,0" Orientation="Horizontal">
+                <Ellipse x:Name="mark1" Margin="5" Fill="Red"
+                         Width="15" Height="15"/>
+                <TextBlock x:Name="caption1" Margin="5" Foreground="Red"
+                           Text="Зоопарк  закрыт"/>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </Window>
